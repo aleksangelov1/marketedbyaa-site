@@ -1,6 +1,30 @@
 import { useState } from "react";
+import LearnMore from "./LearnMore";
 
-// --- Multi-step Apply Form ---
+// Fake brands & reviews for social proof
+const trustedBrands = [
+  { name: "BrewTea", result: "+240% ROAS" },
+  { name: "NovaSkin", result: "3x sales in 90 days" },
+  { name: "UrbanPulse", result: "+175% new customers" },
+  { name: "VoltWear", result: "2.4x store conversion" },
+];
+
+const reviews = [
+  {
+    name: "Sophia B., BrewTea",
+    quote: "Aleks took our ad account from flat to on fire! Revenue up, stress down.",
+  },
+  {
+    name: "Jack H., NovaSkin",
+    quote: "I finally understand where my money’s going. Relentless testing and honest feedback.",
+  },
+  {
+    name: "Ella D., VoltWear",
+    quote: "The only marketer who cared about results, not just spend. My go-to growth partner.",
+  },
+];
+
+// Multi-step Apply Form, all questions
 const steps = [
   {
     label: "What's your full name?",
@@ -23,7 +47,7 @@ const steps = [
   {
     label: "Which service interests you most?",
     name: "service",
-    type: "select",
+    type: "radio",
     options: [
       "Paid Social Ads",
       "TikTok Ads",
@@ -35,7 +59,7 @@ const steps = [
   {
     label: "What's your monthly ad budget?",
     name: "budget",
-    type: "select",
+    type: "radio",
     options: [
       "Under £1,000",
       "£1,000–£5,000",
@@ -44,19 +68,47 @@ const steps = [
     ],
   },
   {
-    label: "Describe your business (optional)",
+    label: "Timeline for launch",
+    name: "timeline",
+    type: "radio",
+    options: [
+      "ASAP",
+      "Within a month",
+      "1-3 months",
+      "3+ months",
+    ],
+  },
+  {
+    label: "How did you hear about us?",
+    name: "referral",
+    type: "radio",
+    options: [
+      "Google search",
+      "Referral",
+      "Instagram/TikTok",
+      "Other",
+    ],
+  },
+  {
+    label: "Tell us about your business (optional)",
     name: "about",
     type: "textarea",
     placeholder: "Niche, goals, current marketing, etc.",
   },
 ];
 
-function ApplyNowForm({ onBackHome }) {
+function ApplyNowForm({ onBackHome, onLearnMore }) {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({});
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e) => setForm({ ...form, [steps[step].name]: e.target.value });
+  const handleChange = (e) => {
+    setForm({ ...form, [steps[step].name]: e.target.value });
+  };
+  const handleRadioChange = (value) => {
+    setForm({ ...form, [steps[step].name]: value });
+  };
+
   const handleNext = (e) => {
     e.preventDefault();
     if (step < steps.length - 1) setStep(step + 1);
@@ -75,47 +127,72 @@ function ApplyNowForm({ onBackHome }) {
     );
 
   const s = steps[step];
+
   return (
-    <form className="form-card centered" onSubmit={handleNext}>
-      <label>
-        {s.label}
-        {s.type === "select" ? (
-          <select
-            required
-            value={form[s.name] || ""}
-            onChange={handleChange}
-            className="form-input"
-          >
-            <option value="">Select</option>
-            {s.options.map((opt) => <option key={opt}>{opt}</option>)}
-          </select>
-        ) : s.type === "textarea" ? (
-          <textarea
-            value={form[s.name] || ""}
-            onChange={handleChange}
-            placeholder={s.placeholder}
-            className="form-input"
-            rows={4}
-          />
-        ) : (
-          <input
-            required={step !== steps.length - 1}
-            value={form[s.name] || ""}
-            onChange={handleChange}
-            placeholder={s.placeholder}
-            className="form-input"
-            type={s.type}
-          />
-        )}
-      </label>
-      <div className="form-actions">
-        <button type="button" onClick={handlePrev} className="form-btn">Back</button>
-        <button type="submit" className="form-btn blue">
-          {step === steps.length - 1 ? "Submit" : "Next"}
-        </button>
+    <div className="apply-page-outer">
+      <div className="apply-learn-card">
+        <h3>Empower Your Brand.</h3>
+        <p>
+          Achieve sustainable growth with data-driven strategies. <br />
+          Unlock the full potential of your brand with powerful tools and insights.
+        </p>
+        <div style={{display:"flex",gap:"1.5em",justifyContent:"center"}}>
+          <button className="hero-cta" style={{margin:"0"}} onClick={onBackHome}>Apply Today</button>
+          <button className="learn-more-btn" type="button" onClick={onLearnMore}>Learn more →</button>
+        </div>
       </div>
-      <div className="progress-bar"><div style={{ width: `${((step + 1) / steps.length) * 100}%` }} /></div>
-    </form>
+      <form className="form-card centered" onSubmit={handleNext}>
+        <label>
+          {s.label}
+          {s.type === "radio" ? (
+            <div className="radio-group">
+              {s.options.map((opt) => (
+                <label key={opt} className="custom-radio">
+                  <input
+                    type="radio"
+                    name={s.name}
+                    value={opt}
+                    checked={form[s.name] === opt}
+                    onChange={() => handleRadioChange(opt)}
+                    required
+                  />
+                  <span className="radio-indicator"></span>
+                  {opt}
+                </label>
+              ))}
+            </div>
+          ) : s.type === "textarea" ? (
+            <textarea
+              value={form[s.name] || ""}
+              onChange={handleChange}
+              placeholder={s.placeholder}
+              className="form-input"
+              rows={4}
+            />
+          ) : (
+            <input
+              required={step !== steps.length - 1}
+              value={form[s.name] || ""}
+              onChange={handleChange}
+              placeholder={s.placeholder}
+              className="form-input"
+              type={s.type}
+            />
+          )}
+        </label>
+        <div className="form-actions">
+          <button type="button" onClick={handlePrev} className="form-btn">
+            Back
+          </button>
+          <button type="submit" className="form-btn blue">
+            {step === steps.length - 1 ? "Submit" : "Next"}
+          </button>
+        </div>
+        <div className="progress-bar">
+          <div style={{ width: `${((step + 1) / steps.length) * 100}%` }} />
+        </div>
+      </form>
+    </div>
   );
 }
 
@@ -129,26 +206,13 @@ function Section({ id, title, children, dark, wide }) {
   );
 }
 
-// --- Reviews Data ---
-const reviews = [
-  {
-    name: "Sophia B.",
-    quote: "Marketed by AA literally changed our business. Within two months, our leads doubled and our ROI went up by 300%. Couldn’t ask for a better team.",
-  },
-  {
-    name: "Jack H.",
-    quote: "Aleks and the team don’t just run ads – they act like a true partner. Transparent, responsive, and the results speak for themselves.",
-  },
-  {
-    name: "Ella D.",
-    quote: "Our last agency wasted so much budget. AA’s hands-on approach & constant testing got us real customers, not just clicks.",
-  },
-];
-
 export default function App() {
-  const [showForm, setShowForm] = useState(false);
+  // For routing: ""=home, "apply"=form, "learn"=learn more page
+  const [page, setPage] = useState("");
 
-  if (showForm) return <ApplyNowForm onBackHome={() => setShowForm(false)} />;
+  // Routing
+  if (page === "learn") return <LearnMore onBackHome={() => setPage("")} />;
+  if (page === "apply") return <ApplyNowForm onBackHome={() => setPage("")} onLearnMore={() => setPage("learn")} />;
 
   return (
     <div>
@@ -165,7 +229,7 @@ export default function App() {
           <a href="#reviews">Reviews</a>
           <a href="#pricing">Pricing</a>
           <a href="#faq">FAQ</a>
-          <button className="apply-btn" onClick={() => setShowForm(true)}>
+          <button className="apply-btn" onClick={() => setPage("apply")}>
             Apply Now
           </button>
         </div>
@@ -177,63 +241,83 @@ export default function App() {
           <img src="/logo.png" alt="Marketed by AA Logo" />
         </div>
         <h1>
-          <span className="blue">Marketed by AA</span>
+          <span className="blue">Empower Your Brand</span>
         </h1>
         <p>
-          Performance marketing that scales <span className="blue">ambitious brands</span>.<br />
-          Facebook, TikTok & Google Ads—the bold, proven way.
+          Achieve sustainable growth with data-driven strategies.<br />
+          Unlock the full potential of your brand with insights and powerful tools.<br />
         </p>
-        <button className="hero-cta" onClick={() => setShowForm(true)}>
-          Apply Now
-        </button>
+        <div className="hero-btn-row">
+          <button className="hero-cta" onClick={() => setPage("apply")}>
+            Apply Today
+          </button>
+          <button className="learn-more-btn" onClick={() => setPage("learn")}>
+            Learn more →
+          </button>
+        </div>
       </header>
+
+      {/* TRUSTED */}
+      <Section wide>
+        <div className="trusted-row">
+          <span>Trusted by</span>
+          {trustedBrands.map(b => (
+            <div className="trusted-brand" key={b.name}>
+              <span>{b.name}</span>
+              <span className="brand-result">{b.result}</span>
+            </div>
+          ))}
+        </div>
+      </Section>
 
       {/* ABOUT */}
       <Section id="about" title="About Us" wide>
         <p>
-          <b>We’re not just an agency—we’re your partner in growth.</b><br /><br />
-          At Marketed by AA, we know how tough it is to cut through the noise online. That’s why we blend creative, scroll-stopping content with data-driven media buying, built to turn strangers into loyal fans.<br /><br />
-          Our founder Aleks worked inside real brands and saw what works—and what’s just fluff. We believe in radical transparency, real results, and outworking every other agency out there.<br /><br />
-          Whether you’re a startup looking for traction, or an established business ready to scale, we deliver the energy, strategy, and hands-on care you’d expect from an in-house team—without the overheads. <span className="blue">Your wins are our wins.</span>
+          <b>Marketed by AA is more than an agency - it's your personal growth partner.</b><br /><br />
+          Founded by Aleks Angelov, I deliver creative-first, data-obsessed marketing for brands that want real results - not just reports. I’ve scaled brands from zero to 7 figures and everything in between, using relentless testing, radical honesty, and full transparency at every step.<br /><br />
+          When you work with me, you get hands-on support, daily reporting, weekly calls, and a proven system built for the platforms that matter: Facebook, TikTok, Google, and UGC. <span className="blue">There’s no copy-paste “strategy” here - just hard work and results.</span>
         </p>
         <ul className="about-list">
-          <li>• Creative-first ad strategies built to stop thumbs.</li>
-          <li>• Daily reporting. Weekly strategy calls.</li>
-          <li>• Paid social, TikTok, Google & creative: all in one place.</li>
+          <li>- Creative ads and scroll-stopping content built for conversions.</li>
+          <li>- Real-time feedback and optimizations.</li>
+          <li>- You work directly with me, not a random account manager.</li>
         </ul>
       </Section>
 
       {/* WHY WORK WITH US */}
-      <Section id="why" title="Why Work With Us?" dark>
+      <Section id="why" title="Why Work With Me?" dark>
         <div className="why-cards">
           <div className="why-card">
-            <h3>🚀 Proven Results</h3>
+            <div className="why-symbol">★</div>
+            <h3>Proven Results</h3>
             <p>
-              Consistent 2–5x ROAS for our clients. We show you the numbers, not just the “reach”.
+              Consistent 2-5x ROAS for clients. The data speaks for itself.
             </p>
           </div>
           <div className="why-card">
-            <h3>🤝 Hands-On Approach</h3>
+            <div className="why-symbol">☑</div>
+            <h3>Hands-On Approach</h3>
             <p>
-              You deal direct with Aleks and the real team—not account managers or chatbots.
+              You get real attention and support from Aleks - no bots, no runaround.
             </p>
           </div>
           <div className="why-card">
-            <h3>🛠️ Tailored Gameplan</h3>
+            <div className="why-symbol">⚡</div>
+            <h3>Tailored Gameplan</h3>
             <p>
-              Every brand is unique. Your strategy, creatives, and budget are built from scratch.
+              Every brand is unique. Your plan is built from scratch.
             </p>
           </div>
         </div>
       </Section>
 
       {/* SERVICES */}
-      <Section id="services" title="What We Do">
+      <Section id="services" title="What I Do">
         <ul className="services-list">
-          <li><b>Paid Social Ads:</b> Facebook & Instagram. Laser-targeted, tested, and tweaked.</li>
-          <li><b>TikTok Ads:</b> Capture the next generation with authentic creative and UGC.</li>
-          <li><b>Google Ads:</b> Be where buyers search. High-intent, bottom-funnel focus.</li>
-          <li><b>Creative Packages:</b> Scroll-stopping videos & content built for paid media.</li>
+          <li>- Paid Social Ads: Facebook & Instagram - targeting, scaling, creative.</li>
+          <li>- TikTok Ads: Authentic, platform-native, and viral.</li>
+          <li>- Google Ads: Dominate search and retarget ready-to-buy customers.</li>
+          <li>- Creative Packages: UGC, video, and ad content built for conversions.</li>
         </ul>
       </Section>
 
@@ -243,22 +327,22 @@ export default function App() {
           <div className="step-card">
             <span>1</span>
             <b>Discovery Call</b>
-            <p>We listen to your vision & goals.</p>
+            <p>We talk goals and diagnose your bottlenecks.</p>
           </div>
           <div className="step-card">
             <span>2</span>
             <b>Custom Plan</b>
-            <p>Your strategy, creative & ad plan mapped out.</p>
+            <p>Your unique ad, creative, and scaling blueprint.</p>
           </div>
           <div className="step-card">
             <span>3</span>
             <b>Launch & Optimise</b>
-            <p>Relentless testing, daily feedback.</p>
+            <p>Relentless testing, daily feedback, real growth.</p>
           </div>
           <div className="step-card">
             <span>4</span>
             <b>Scale Up</b>
-            <p>Double down on what’s working. Cut waste. Grow fast.</p>
+            <p>Double down on what works - cut the waste.</p>
           </div>
         </div>
       </Section>
@@ -278,9 +362,9 @@ export default function App() {
       {/* PRICING */}
       <Section id="pricing" title="Pricing" dark>
         <ul className="pricing-list">
-          <li><b>Essentials:</b> from <span className="blue">£500/mo</span></li>
-          <li><b>Full Service Growth:</b> from <span className="blue">£1,000/mo</span> + % of ad spend</li>
-          <li><b>Creative Packs:</b> from <span className="blue">£250/mo</span></li>
+          <li>- Essentials: from <span className="blue">£500/mo</span></li>
+          <li>- Full Service Growth: from <span className="blue">£1,000/mo</span> + % of ad spend</li>
+          <li>- Creative Packs: from <span className="blue">£250/mo</span></li>
           <li>
             Need something bespoke? <span className="blue">Get in touch.</span>
           </li>
@@ -291,15 +375,15 @@ export default function App() {
       <Section id="faq" title="FAQ">
         <details>
           <summary>What makes Marketed by AA different?</summary>
-          <p>Radical transparency. No bloat. Real results—delivered by real people, not just dashboards.</p>
+          <p>Radical transparency. No bloat. Real results delivered by a real partner - not just dashboards.</p>
         </details>
         <details>
           <summary>What niches do you work with?</summary>
-          <p>Ecom, info products, local business, SaaS—if it can scale, we can run ads for it.</p>
+          <p>Ecom, info, local business, SaaS - if it can scale, I can run ads for it.</p>
         </details>
         <details>
           <summary>How fast do you launch?</summary>
-          <p>Most brands launch in 3–5 days after onboarding.</p>
+          <p>Most brands launch in 3-5 days after onboarding.</p>
         </details>
       </Section>
 
