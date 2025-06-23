@@ -8,22 +8,45 @@ const steps = [
     placeholder: "Enter your full name",
   },
   {
-    label: "What's your email address?",
+    label: "Your email address",
     name: "email",
     type: "email",
     placeholder: "Enter your email",
   },
   {
-    label: "What service are you interested in?",
-    name: "service",
-    type: "text",
-    placeholder: "e.g. Facebook Ads, TikTok Ads, Google Ads",
+    label: "Phone number",
+    name: "phone",
+    type: "tel",
+    placeholder: "Enter your phone",
   },
   {
-    label: "Tell us a bit about your business",
+    label: "Which service are you interested in?",
+    name: "service",
+    type: "select",
+    options: [
+      "Facebook & Instagram Ads",
+      "TikTok Ads",
+      "Google Ads",
+      "Creative Content",
+      "Not Sure / Need Advice",
+    ],
+  },
+  {
+    label: "Monthly marketing budget",
+    name: "budget",
+    type: "select",
+    options: [
+      "Under £1,000",
+      "£1,000 - £5,000",
+      "£5,000 - £20,000",
+      "£20,000+",
+    ],
+  },
+  {
+    label: "Tell us about your business (optional)",
     name: "about",
     type: "textarea",
-    placeholder: "Describe your business...",
+    placeholder: "E.g. your niche, goals, current marketing...",
   },
 ];
 
@@ -50,38 +73,59 @@ function ApplyNowForm({ onBackHome }) {
   if (submitted)
     return (
       <div className="form-card">
-        <h2>Thank you for applying!</h2>
-        <p>We’ll be in touch soon.</p>
-        <button onClick={onBackHome}>Back to Home</button>
+        <h2>Thanks for applying!</h2>
+        <p>
+          We'll get back to you within 24 hours. <br />
+          <button onClick={onBackHome} className="form-btn">
+            Back to Home
+          </button>
+        </p>
       </div>
     );
 
+  const s = steps[step];
   return (
     <form className="form-card" onSubmit={handleNext}>
       <label>
-        {steps[step].label}
-        {steps[step].type === "textarea" ? (
-          <textarea
+        {s.label}
+        {s.type === "select" ? (
+          <select
             required
-            value={form[steps[step].name] || ""}
+            value={form[s.name] || ""}
             onChange={handleChange}
-            placeholder={steps[step].placeholder}
+            className="form-input"
+          >
+            <option value="">Select an option</option>
+            {s.options.map((opt) => (
+              <option key={opt}>{opt}</option>
+            ))}
+          </select>
+        ) : s.type === "textarea" ? (
+          <textarea
+            value={form[s.name] || ""}
+            onChange={handleChange}
+            placeholder={s.placeholder}
+            className="form-input"
+            rows={4}
           />
         ) : (
           <input
-            type={steps[step].type}
-            required
-            value={form[steps[step].name] || ""}
+            required={step !== steps.length - 1}
+            value={form[s.name] || ""}
             onChange={handleChange}
-            placeholder={steps[step].placeholder}
+            placeholder={s.placeholder}
+            className="form-input"
+            type={s.type}
           />
         )}
       </label>
       <div className="form-actions">
-        <button type="button" onClick={handlePrev}>
+        <button type="button" onClick={handlePrev} className="form-btn">
           {step === 0 ? "Back to Home" : "Back"}
         </button>
-        <button type="submit">{step === steps.length - 1 ? "Submit" : "Next"}</button>
+        <button type="submit" className="form-btn blue">
+          {step === steps.length - 1 ? "Submit" : "Next"}
+        </button>
       </div>
       <div className="progress-bar">
         <div style={{ width: `${((step + 1) / steps.length) * 100}%` }} />
@@ -90,7 +134,7 @@ function ApplyNowForm({ onBackHome }) {
   );
 }
 
-function Section({ title, children, id, dark }) {
+function Section({ id, title, dark, children }) {
   return (
     <section className={`section${dark ? " dark" : ""}`} id={id}>
       <h2>{title}</h2>
@@ -107,10 +151,10 @@ export default function App() {
   }
 
   return (
-    <div className="app">
+    <div>
       <nav className="navbar">
-        <div className="logo">
-          <span className="blue">AA</span> Marketing
+        <div className="logo-img">
+          <img src="/logo.png" alt="Marketed by AA Logo" />
         </div>
         <div className="nav-links">
           <a href="#about">About</a>
@@ -123,95 +167,93 @@ export default function App() {
           </button>
         </div>
       </nav>
-
       <header className="hero">
         <h1>
-          Scale Your Brand with <span className="blue">Marketed by AA</span>
+          <span className="blue">Marketed by AA</span>
         </h1>
         <p>
-          Results-driven Facebook, TikTok, and Google Ads for bold brands.
+          Performance marketing that scales ambitious brands. <br />
+          Facebook, TikTok & Google Ads done the <span className="blue">bold</span> way.
         </p>
         <button className="hero-cta" onClick={() => setShowForm(true)}>
           Apply Now
         </button>
       </header>
-
-      <Section title="About Us" id="about">
+      <Section id="about" title="About Us">
         <p>
-          Marketed by AA is your dedicated growth partner—combining world-class creative, 
-          relentless execution, and transparent reporting. We scale brands profitably, 
-          no matter the niche.
+          Marketed by AA is your growth engine. We use creative, data-led ads to get brands seen, trusted, and scaling. Get the impact of an in-house team, minus the overheads.
         </p>
       </Section>
-
-      <Section title="Our Services" id="services" dark>
+      <Section id="services" title="What We Do" dark>
         <ul>
           <li>
-            <b>Facebook & Instagram Ads:</b> Advanced targeting for scalable ROI.
+            <b>Paid Social Ads:</b> Facebook & Instagram. Laser-targeted, tested, and tweaked.
           </li>
           <li>
-            <b>TikTok Ads:</b> Captivate Gen Z and Millennials on the world’s fastest-growing platform.
+            <b>TikTok Ads:</b> Capture the next generation with authentic creative and UGC.
           </li>
           <li>
-            <b>Google Ads:</b> Dominate search with high-intent buyers ready to convert.
+            <b>Google Ads:</b> Be where buyers search. High-intent, bottom-funnel focus.
           </li>
           <li>
-            <b>Creative Strategy:</b> Stand out with scroll-stopping UGC and high-conversion creative.
+            <b>Creative Packages:</b> Scroll-stopping videos & content built for paid media.
           </li>
         </ul>
       </Section>
-
-      <Section title="How It Works" id="how">
+      <Section id="how" title="How It Works">
         <ol>
           <li>
-            <b>Discovery Call:</b> We dive into your brand, goals, and what makes you different.
+            <b>Discovery Call:</b> We learn your vision and pain points.
           </li>
           <li>
-            <b>Launch:</b> We create and run bold, data-driven ad campaigns.
+            <b>Blueprint:</b> Custom strategy, creative, and media plan.
           </li>
           <li>
-            <b>Scale:</b> You get clear results, regular reports, and reliable growth.
+            <b>Launch & Optimise:</b> Relentless testing, daily reporting.
+          </li>
+          <li>
+            <b>Scale:</b> Double down on what works, cut the noise.
           </li>
         </ol>
       </Section>
-
-      <Section title="Pricing" id="pricing" dark>
-        <p>
-          We keep it simple:
-          <br />
-          <b>Ad Management:</b> from £500/mo
-          <br />
-          <b>Creative Packages:</b> from £300/mo
-          <br />
-          Custom plans for ambitious brands. Book a call for a tailored quote.
-        </p>
+      <Section id="pricing" title="Pricing" dark>
+        <ul>
+          <li>
+            <b>Essentials (Self-serve):</b> from £500/mo
+          </li>
+          <li>
+            <b>Full Service Growth:</b> from £1,000/mo + % of ad spend
+          </li>
+          <li>
+            <b>Creative Packs:</b> from £250/mo
+          </li>
+          <li>
+            Need something bespoke? <span className="blue">Get in touch.</span>
+          </li>
+        </ul>
       </Section>
-
-      <Section title="FAQ" id="faq">
+      <Section id="faq" title="FAQ">
         <details>
           <summary>What makes Marketed by AA different?</summary>
           <p>
-            100% personalized, proactive, and data-driven. We act as your in-house team—without the payroll headaches.
+            Real partnership, not just reporting. No bloat, no nonsense, just real, honest scaling.
           </p>
         </details>
         <details>
-          <summary>Do you guarantee results?</summary>
+          <summary>What niches do you work with?</summary>
           <p>
-            We guarantee hustle, radical honesty, and transparent reporting. No agency can ethically guarantee sales, but we do guarantee relentless effort and strategic testing.
+            Ecom, info products, local business, SaaS—if it can scale, we can run ads for it.
           </p>
         </details>
         <details>
-          <summary>How soon can I get started?</summary>
+          <summary>How fast do you launch?</summary>
           <p>
-            Most brands launch within 1 week of signing up.
+            Most brands launch in 3–5 days after onboarding.
           </p>
         </details>
       </Section>
-
       <footer>
-        <span>
-          &copy; {new Date().getFullYear()} Marketed by AA. All rights reserved.
-        </span>
+        &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
       </footer>
     </div>
   );
