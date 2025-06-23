@@ -283,23 +283,20 @@ export default function App() {
         </div>
       </Section>
 
-<div className="w-full flex flex-col items-center justify-center py-12">
+<div className="flex flex-col items-center justify-center min-h-[60vh]">
   {/* Title */}
-  <h2 className="text-3xl md:text-4xl font-extrabold text-[#AED6F1] mb-6 text-center" style={{ letterSpacing: '0.5px' }}>
+  <h2 className="text-2xl md:text-3xl font-extrabold text-[#AED6F1] mb-4 text-center" style={{ letterSpacing: '0.5px' }}>
     Generating an extra $15.5k in tracked revenue—see for yourself!
   </h2>
-  {/* Image with glow */}
+  {/* Image with subtle glow */}
   <img
     src="/result-proof.png"
     alt="Client results"
-    className="w-[220px] md:w-[270px] max-w-full rounded-lg mx-auto mb-2"
-    style={{
-      filter: 'drop-shadow(0 0 60px #AED6F1)',
-      display: 'block',
-    }}
+    className="w-[140px] md:w-[180px] rounded-lg"
+    style={{ filter: 'drop-shadow(0 0 32px #AED6F1)', display: 'block' }}
   />
   {/* Caption */}
-  <div className="text-base text-[#AED6F1] text-center font-semibold mt-2">
+  <div className="text-sm text-[#AED6F1] text-center font-medium mt-3">
     £1,918.14 spent — £15,505.26 in sales • 7.54x avg. ROAS • 254 purchases
   </div>
 </div>
