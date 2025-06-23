@@ -285,25 +285,27 @@ export default function App() {
 
 <div className="flex flex-col items-center my-16">
   {/* Title */}
-  <h2 className="text-2xl md:text-3xl font-bold text-[#AED6F1] mb-3 text-center">
+  <h2 className="text-2xl md:text-3xl font-bold text-[#AED6F1] mb-4 text-center">
     Generating an extra $15.5k in tracked revenue—see for yourself!
   </h2>
-  {/* Image with blue glow */}
+  {/* Image with glow */}
   <img
-    src="/result-proof.png" // Make sure your file is named correctly and is in /public
+    src="/result-proof.png" // Make sure your image file matches
     alt="Client results"
-    className="w-full max-w-2xl mx-auto mb-4"
+    className="w-[480px] max-w-full mx-auto mb-3"
     style={{
       filter: 'drop-shadow(0 0 50px #AED6F1)',
-      borderRadius: '16px'
+      borderRadius: '16px',
+      display: 'block',
     }}
   />
   {/* Caption */}
-  <div className="text-sm text-[#AED6F1] text-center font-medium">
-    £1,918.14 spent &nbsp;—&nbsp; £15,505.26 in sales <br />
+  <div className="text-sm text-[#AED6F1] text-center font-medium mt-1">
+    £1,918.14 spent &mdash; £15,505.26 in sales <br />
     7.54x avg. ROAS | 254 purchases
   </div>
 </div>
+
 
       
       {/* ABOUT */}
