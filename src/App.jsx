@@ -51,6 +51,7 @@ const steps = [
       "Paid Social Ads",
       "TikTok Ads",
       "Google Ads",
+      "Facebook Ads",
       "Creative Content",
       "Not Sure",
     ],
@@ -60,10 +61,10 @@ const steps = [
     name: "budget",
     type: "radio",
     options: [
-      "Under £1,000",
-      "£1,000–£5,000",
-      "£5,000–£20,000",
-      "£20,000+",
+      "£0-£500",
+      "£500-£2,000",
+      "£2,000–£5,000",
+      "£5,000+",
     ],
   },
   {
@@ -83,8 +84,8 @@ const steps = [
     type: "radio",
     options: [
       "Google search",
-      "Referral",
       "Instagram/TikTok",
+      "Word of mouth",
       "Other",
     ],
   },
@@ -116,14 +117,29 @@ function ApplyNowForm({ onBackHome }) {
   const handlePrev = () => (step > 0 ? setStep(step - 1) : onBackHome());
 
   if (submitted)
-    return (
-      <div className="form-card centered">
-        <h2>Thank you for applying!</h2>
-        <p>We’ll be in touch within 24 hours.<br />
-          <button onClick={onBackHome} className="form-btn blue">Back to Home</button>
-        </p>
-      </div>
-    );
+  return (
+    <div
+      className="form-card"
+      style={{
+        minHeight: 400,
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        textAlign: "center",
+        margin: "0 auto",
+      }}
+    >
+      <h2 style={{ marginBottom: "1em" }}>Thank you for applying!</h2>
+      <p style={{ margin: "0 0 2em 0", color: "#eaf6fb" }}>
+        We’ll be in touch within 24 hours.
+      </p>
+      <button onClick={onBackHome} className="form-btn blue">
+        Back to Home
+      </button>
+    </div>
+  );
+
 
   const s = steps[step];
 
@@ -235,7 +251,7 @@ export default function App() {
       {/* HERO */}
       <header className="hero centered">
         <div className="logo-img big-hero-logo">
-          <img src="/logo.png" alt="Marketed by AA Logo" />
+           <img src="/logo.png" alt="Marketed by AA Logo" style={{ height: "120px" }} />
         </div>
         <h1>
           <span className="blue">Empower Your Brand</span>
@@ -311,10 +327,10 @@ export default function App() {
       {/* SERVICES */}
       <Section id="services" title="What I Do">
         <ul className="services-list">
-          <li>- Paid Social Ads: Facebook & Instagram - targeting, scaling, creative.</li>
-          <li>- TikTok Ads: Authentic, platform-native, and viral.</li>
-          <li>- Google Ads: Dominate search and retarget ready-to-buy customers.</li>
-          <li>- Creative Packages: UGC, video, and ad content built for conversions.</li>
+          <li> Paid Social Ads: Facebook & Instagram - targeting, scaling, creative.</li>
+          <li> TikTok Ads: Authentic, platform-native, and viral.</li>
+          <li> Google Ads: Dominate search and retarget ready-to-buy customers.</li>
+          <li> Creative Packages: UGC, video, and ad content built for conversions.</li>
         </ul>
       </Section>
 
@@ -359,9 +375,9 @@ export default function App() {
       {/* PRICING */}
       <Section id="pricing" title="Pricing" dark>
         <ul className="pricing-list">
-          <li>- Essentials: from <span className="blue">£500/mo</span></li>
-          <li>- Full Service Growth: from <span className="blue">£1,000/mo</span> + % of ad spend</li>
-          <li>- Creative Packs: from <span className="blue">£250/mo</span></li>
+          <li> Essentials: from <span className="blue">£500/mo</span></li>
+          <li> Full Service Growth: from <span className="blue">£1,000/mo</span> + % of ad spend</li>
+          <li> Creative Packs: from <span className="blue">£250/mo</span></li>
           <li>
             Need something bespoke? <span className="blue">Get in touch.</span>
           </li>
