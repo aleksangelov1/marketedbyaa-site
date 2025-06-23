@@ -1,5 +1,4 @@
 import { useState } from "react";
-import LearnMore from "./LearnMore";
 
 // Fake brands for Trusted By
 const trustedBrands = [
@@ -9,6 +8,7 @@ const trustedBrands = [
   { name: "VoltWear", result: "2.4x store conversion" },
 ];
 
+// Reviews
 const reviews = [
   {
     name: "Sophia B., BrewTea",
@@ -24,6 +24,7 @@ const reviews = [
   },
 ];
 
+// Steps for multi-step form
 const steps = [
   {
     label: "What's your full name?",
@@ -60,10 +61,10 @@ const steps = [
     name: "budget",
     type: "radio",
     options: [
-      "Under £1,000",
-      "£1,000–£5,000",
-      "£5,000–£20,000",
-      "£20,000+",
+      "£0–£1,000",
+      "£1,000–£2,000",
+      "£2,000–£5,000",
+      "£5,000+",
     ],
   },
   {
@@ -96,6 +97,22 @@ const steps = [
   },
 ];
 
+// Section wrapper
+function Section({ id, title, children, dark, wide }) {
+  return (
+    <section className={`section${dark ? " dark" : ""}${wide ? " wide" : ""}`} id={id}>
+      {title && (
+        <div className="section-heading">
+          <h2>{title}</h2>
+          <div className="heading-underline"></div>
+        </div>
+      )}
+      {children}
+    </section>
+  );
+}
+
+// Multi-step Apply Now form
 function ApplyNowForm({ onBackHome }) {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({});
@@ -117,11 +134,14 @@ function ApplyNowForm({ onBackHome }) {
 
   if (submitted)
     return (
-      <div className="form-card centered">
+      <div className="form-card centered" style={{ minHeight: 400, justifyContent: "center" }}>
         <h2>Thank you for applying!</h2>
-        <p>We’ll be in touch within 24 hours.<br />
-          <button onClick={onBackHome} className="form-btn blue">Back to Home</button>
+        <p style={{ margin: "1.2em 0" }}>
+          We’ll be in touch within 24 hours.
         </p>
+        <button onClick={onBackHome} className="form-btn blue">
+          Back to Home
+        </button>
       </div>
     );
 
@@ -129,13 +149,13 @@ function ApplyNowForm({ onBackHome }) {
 
   return (
     <div className="apply-form-outer">
-      <form className="form-card centered" onSubmit={handleNext}>
-        <label>
+      <form className="form-card centered" onSubmit={handleNext} style={{ minHeight: 340, justifyContent: "center" }}>
+        <label style={{ width: "100%" }}>
           {s.label}
           {s.type === "radio" ? (
-            <div className="radio-group">
+            <div className="radio-group" style={{ marginTop: 18 }}>
               {s.options.map((opt) => (
-                <label key={opt} className="custom-radio">
+                <label key={opt} className="custom-radio" style={{ marginBottom: 4 }}>
                   <input
                     type="radio"
                     name={s.name}
@@ -184,17 +204,23 @@ function ApplyNowForm({ onBackHome }) {
   );
 }
 
-function Section({ id, title, children, dark, wide }) {
+// Learn More page
+function LearnMore({ onBackHome }) {
   return (
-    <section className={`section${dark ? " dark" : ""}${wide ? " wide" : ""}`} id={id}>
-      {title && (
-        <div className="section-heading">
-          <h2>{title}</h2>
-          <div className="heading-underline"></div>
-        </div>
-      )}
-      {children}
-    </section>
+    <div className="learn-more-page">
+      <div className="learn-more-card">
+        <h1>Learn More About Marketed by AA</h1>
+        <p>
+          At Marketed by AA, I use data, creative, and relentless testing to help brands break through growth plateaus. Whether you need full-funnel paid media, creative strategy, or just want to talk about scaling - I’ve got you.
+        </p>
+        <ul>
+          <li>100% transparency & real-time results.</li>
+          <li>Solo founder, no fluff, no handoffs.</li>
+          <li>Partnerships with brands like BrewTea, NovaSkin, UrbanPulse, and more.</li>
+        </ul>
+        <button className="hero-cta" onClick={onBackHome}>Back to Home</button>
+      </div>
+    </div>
   );
 }
 
@@ -206,17 +232,16 @@ export default function App() {
 
   return (
     <div>
-      {/* Hero background blobs */}
+      {/* Hero blobs */}
       <div className="hero-blobs">
         <div className="blob blob1"></div>
         <div className="blob blob2"></div>
         <div className="blob blob3"></div>
       </div>
-
-      {/* NAV */}
+      {/* NAVBAR */}
       <nav className="navbar">
         <div className="logo-img big-logo">
-          <img src="/logo.png" alt="Marketed by AA Logo" />
+          <img src="/logo.png" alt="Marketed by AA Logo" style={{ height: "98px" }} />
         </div>
         <div className="nav-links">
           <a href="#about">About</a>
@@ -231,18 +256,17 @@ export default function App() {
           </button>
         </div>
       </nav>
-
       {/* HERO */}
       <header className="hero centered">
         <div className="logo-img big-hero-logo">
-          <img src="/logo.png" alt="Marketed by AA Logo" />
+          <img src="/logo.png" alt="Marketed by AA Logo" style={{ height: "122px" }} />
         </div>
         <h1>
           <span className="blue">Empower Your Brand</span>
         </h1>
         <p>
           Achieve sustainable growth with data-driven strategies.<br />
-          Unlock the full potential of your brand with insights and powerful tools.<br />
+          Unlock the full potential of your brand with insights and powerful tools.
         </p>
         <div className="hero-btn-row">
           <button className="hero-cta pulse-btn" onClick={() => setPage("apply")}>
@@ -253,8 +277,38 @@ export default function App() {
           </button>
         </div>
       </header>
-
-      {/* TRUSTED */}
+      {/* RESULTS PROOF CARD */}
+      <Section wide>
+        <div
+          className="card"
+          style={{
+            maxWidth: 440,
+            margin: "0 auto 3rem auto",
+            background: "rgba(20, 30, 42, 0.97)",
+            boxShadow: "0 8px 64px #aed6f155",
+            border: "1px solid #213c4c",
+            textAlign: "center"
+          }}
+        >
+          <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 10, color: "#AED6F1" }}>
+            Generating an extra $15.5k in tracked revenue—see for yourself!
+          </div>
+          <img
+            src="/result-proof.png"
+            alt="Client results"
+            style={{
+              width: "100%",
+              borderRadius: "1.3em",
+              boxShadow: "0 0 14px #aed6f1bb"
+            }}
+          />
+          <div style={{ marginTop: 16, color: "#eaf6fb", fontSize: 15 }}>
+            <b>£1,918.14 spent</b> → <b>£15,505.26 in sales</b> <br />
+            <span style={{ color: "#aad" }}>7.54x avg. ROAS | 254 purchases</span>
+          </div>
+        </div>
+      </Section>
+      {/* TRUSTED BY */}
       <Section wide>
         <div className="trusted-row">
           <span className="trusted-title">TRUSTED BY</span>
@@ -266,7 +320,6 @@ export default function App() {
           ))}
         </div>
       </Section>
-
       {/* ABOUT */}
       <Section id="about" title="About Us" wide>
         <p>
@@ -275,24 +328,23 @@ export default function App() {
           When you work with me, you get hands-on support, daily reporting, weekly calls, and a proven system built for the platforms that matter: Facebook, TikTok, Google, and UGC. <span className="blue">There’s no copy-paste “strategy” here - just hard work and results.</span>
         </p>
         <ul className="about-list">
-          <li>- Creative ads and scroll-stopping content built for conversions.</li>
-          <li>- Real-time feedback and optimizations.</li>
-          <li>- You work directly with me, not a random account manager.</li>
+          <li>Creative ads and scroll-stopping content built for conversions.</li>
+          <li>Real-time feedback and optimizations.</li>
+          <li>You work directly with me, not a random account manager.</li>
         </ul>
       </Section>
-
-      {/* WHY WORK WITH US */}
+      {/* WHY WORK WITH ME */}
       <Section id="why" title="Why Work With Me?" dark>
         <div className="why-cards">
           <div className="why-card">
-            <div className="why-symbol">★</div>
+            <div className="why-symbol">⭐</div>
             <h3>Proven Results</h3>
             <p>
               Consistent 2-5x ROAS for clients. The data speaks for itself.
             </p>
           </div>
           <div className="why-card">
-            <div className="why-symbol">☑</div>
+            <div className="why-symbol">🤝</div>
             <h3>Hands-On Approach</h3>
             <p>
               You get real attention and support from Aleks - no bots, no runaround.
@@ -307,17 +359,15 @@ export default function App() {
           </div>
         </div>
       </Section>
-
-      {/* SERVICES */}
+      {/* WHAT I DO */}
       <Section id="services" title="What I Do">
         <ul className="services-list">
-          <li>- Paid Social Ads: Facebook & Instagram - targeting, scaling, creative.</li>
-          <li>- TikTok Ads: Authentic, platform-native, and viral.</li>
-          <li>- Google Ads: Dominate search and retarget ready-to-buy customers.</li>
-          <li>- Creative Packages: UGC, video, and ad content built for conversions.</li>
+          <li>Paid Social Ads: Facebook & Instagram - targeting, scaling, creative.</li>
+          <li>TikTok Ads: Authentic, platform-native, and viral.</li>
+          <li>Google Ads: Dominate search and retarget ready-to-buy customers.</li>
+          <li>Creative Packages: UGC, video, and ad content built for conversions.</li>
         </ul>
       </Section>
-
       {/* HOW IT WORKS */}
       <Section id="how" title="How It Works" dark>
         <div className="steps-row">
@@ -343,7 +393,6 @@ export default function App() {
           </div>
         </div>
       </Section>
-
       {/* REVIEWS */}
       <Section id="reviews" title="What Clients Say">
         <div className="reviews-row">
@@ -355,19 +404,17 @@ export default function App() {
           ))}
         </div>
       </Section>
-
       {/* PRICING */}
       <Section id="pricing" title="Pricing" dark>
         <ul className="pricing-list">
-          <li>- Essentials: from <span className="blue">£500/mo</span></li>
-          <li>- Full Service Growth: from <span className="blue">£1,000/mo</span> + % of ad spend</li>
-          <li>- Creative Packs: from <span className="blue">£250/mo</span></li>
+          <li>Essentials: from <span className="blue">£500/mo</span></li>
+          <li>Full Service Growth: from <span className="blue">£1,000/mo</span> + % of ad spend</li>
+          <li>Creative Packs: from <span className="blue">£250/mo</span></li>
           <li>
             Need something bespoke? <span className="blue">Get in touch.</span>
           </li>
         </ul>
       </Section>
-
       {/* FAQ */}
       <Section id="faq" title="FAQ">
         <details>
@@ -383,7 +430,6 @@ export default function App() {
           <p>Most brands launch in 3-5 days after onboarding.</p>
         </details>
       </Section>
-
       <footer>
         &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
       </footer>
