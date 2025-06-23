@@ -283,7 +283,7 @@ export default function App() {
         </div>
       </Section>
 
-<div className="flex flex-col items-center justify-center min-h-[60vh] w-full">
+ <div className="relative flex justify-center items-center mb-3">
   {/* Title */}
   <h2 className="text-xl md:text-2xl font-extrabold text-[#AED6F1] mb-4 text-center" style={{ letterSpacing: '0.5px' }}>
     Generating an extra $15.5k in tracked revenue—see for yourself!
@@ -293,7 +293,7 @@ export default function App() {
     <img
       src="/result-proof.png"
       alt="Client results"
-      className="w-[180px] md:w-[220px] rounded-lg"
+      className="w-[100px] md:w-[140px] rounded-lg"
       style={{
         filter: 'drop-shadow(0 0 32px #AED6F1)',
         display: 'block',
