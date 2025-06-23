@@ -289,23 +289,25 @@ export default function App() {
     Generating an extra $15.5k in tracked revenue—see for yourself!
   </h2>
   {/* Image with glow */}
-  <img
-    src="/result-proof.png" // Make sure your image file matches
-    alt="Client results"
-    className="w-[480px] max-w-full mx-auto mb-3"
-    style={{
-      filter: 'drop-shadow(0 0 50px #AED6F1)',
-      borderRadius: '16px',
-      display: 'block',
-    }}
-  />
+  <div className="flex justify-center items-center w-full">
+    <img
+      src="/result-proof.png"
+      alt="Client results"
+      className="w-[320px] max-w-full mb-3"
+      style={{
+        filter: 'drop-shadow(0 0 40px #AED6F1)',
+        borderRadius: '16px',
+        display: 'block',
+        margin: '0 auto',
+      }}
+    />
+  </div>
   {/* Caption */}
   <div className="text-sm text-[#AED6F1] text-center font-medium mt-1">
     £1,918.14 spent &mdash; £15,505.26 in sales <br />
     7.54x avg. ROAS | 254 purchases
   </div>
 </div>
-
 
       
       {/* ABOUT */}
