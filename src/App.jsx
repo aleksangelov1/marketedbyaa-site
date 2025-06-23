@@ -251,7 +251,7 @@ export default function App() {
       {/* HERO */}
       <header className="hero centered">
         <div className="logo-img big-hero-logo">
-           <img src="/logo.png" alt="Marketed by AA Logo" style={{ height: "120px" }} />
+           <img src="/logo.png" alt="Marketed by AA Logo" style={{ height: "400px" }} />
         </div>
         <h1>
           <span className="blue">Empower Your Brand</span>
@@ -283,6 +283,33 @@ export default function App() {
         </div>
       </Section>
 
+<section className="card" style={{
+  maxWidth: 440,
+  margin: "0 auto 3rem auto",
+  background: "rgba(20, 30, 42, 0.97)",
+  boxShadow: "0 8px 64px #aed6f155",
+  border: "1px solid #213c4c",
+  textAlign: "center"
+}}>
+  <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 10, color: "#AED6F1" }}>
+    Generating an extra $15.5k in tracked revenue—see for yourself!
+  </div>
+  <img
+    src="/result-proof.png"
+    alt="Client results"
+    style={{
+      width: "100%",
+      borderRadius: "1.3em",
+      boxShadow: "0 0 14px #aed6f1bb"
+    }}
+  />
+  <div style={{ marginTop: 16, color: "#eaf6fb", fontSize: 15 }}>
+    <b>£1,918.14 spent</b> → <b>£15,505.26 in sales</b> <br />
+    <span style={{ color: "#aad" }}>7.54x avg. ROAS | 254 purchases</span>
+  </div>
+</section>
+
+      
       {/* ABOUT */}
       <Section id="about" title="About Us" wide>
         <p>
@@ -291,9 +318,9 @@ export default function App() {
           When you work with me, you get hands-on support, daily reporting, weekly calls, and a proven system built for the platforms that matter: Facebook, TikTok, Google, and UGC. <span className="blue">There’s no copy-paste “strategy” here - just hard work and results.</span>
         </p>
         <ul className="about-list">
-          <li>- Creative ads and scroll-stopping content built for conversions.</li>
-          <li>- Real-time feedback and optimizations.</li>
-          <li>- You work directly with me, not a random account manager.</li>
+          <li> Creative ads and scroll-stopping content built for conversions.</li>
+          <li> Real-time feedback and optimizations.</li>
+          <li> You work directly with me, not a random account manager.</li>
         </ul>
       </Section>
 
