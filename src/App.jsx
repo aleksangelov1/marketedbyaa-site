@@ -1,7 +1,7 @@
 import { useState } from "react";
 import LearnMore from "./LearnMore";
 
-// Fake brands & reviews for social proof
+// Fake brands for Trusted By
 const trustedBrands = [
   { name: "BrewTea", result: "+240% ROAS" },
   { name: "NovaSkin", result: "3x sales in 90 days" },
@@ -24,7 +24,6 @@ const reviews = [
   },
 ];
 
-// Multi-step Apply Form, all questions
 const steps = [
   {
     label: "What's your full name?",
@@ -97,7 +96,7 @@ const steps = [
   },
 ];
 
-function ApplyNowForm({ onBackHome, onLearnMore }) {
+function ApplyNowForm({ onBackHome }) {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({});
   const [submitted, setSubmitted] = useState(false);
@@ -129,18 +128,7 @@ function ApplyNowForm({ onBackHome, onLearnMore }) {
   const s = steps[step];
 
   return (
-    <div className="apply-page-outer">
-      <div className="apply-learn-card">
-        <h3>Empower Your Brand.</h3>
-        <p>
-          Achieve sustainable growth with data-driven strategies. <br />
-          Unlock the full potential of your brand with powerful tools and insights.
-        </p>
-        <div style={{display:"flex",gap:"1.5em",justifyContent:"center"}}>
-          <button className="hero-cta" style={{margin:"0"}} onClick={onBackHome}>Apply Today</button>
-          <button className="learn-more-btn" type="button" onClick={onLearnMore}>Learn more →</button>
-        </div>
-      </div>
+    <div className="apply-form-outer">
       <form className="form-card centered" onSubmit={handleNext}>
         <label>
           {s.label}
@@ -156,8 +144,8 @@ function ApplyNowForm({ onBackHome, onLearnMore }) {
                     onChange={() => handleRadioChange(opt)}
                     required
                   />
-                  <span className="radio-indicator"></span>
-                  {opt}
+                  <span className="radio-indicator" />
+                  <span className="radio-label">{opt}</span>
                 </label>
               ))}
             </div>
@@ -196,26 +184,35 @@ function ApplyNowForm({ onBackHome, onLearnMore }) {
   );
 }
 
-// --- Main Sections ---
 function Section({ id, title, children, dark, wide }) {
   return (
     <section className={`section${dark ? " dark" : ""}${wide ? " wide" : ""}`} id={id}>
-      {title && <h2>{title}</h2>}
+      {title && (
+        <div className="section-heading">
+          <h2>{title}</h2>
+          <div className="heading-underline"></div>
+        </div>
+      )}
       {children}
     </section>
   );
 }
 
 export default function App() {
-  // For routing: ""=home, "apply"=form, "learn"=learn more page
   const [page, setPage] = useState("");
 
-  // Routing
   if (page === "learn") return <LearnMore onBackHome={() => setPage("")} />;
-  if (page === "apply") return <ApplyNowForm onBackHome={() => setPage("")} onLearnMore={() => setPage("learn")} />;
+  if (page === "apply") return <ApplyNowForm onBackHome={() => setPage("")} />;
 
   return (
     <div>
+      {/* Hero background blobs */}
+      <div className="hero-blobs">
+        <div className="blob blob1"></div>
+        <div className="blob blob2"></div>
+        <div className="blob blob3"></div>
+      </div>
+
       {/* NAV */}
       <nav className="navbar">
         <div className="logo-img big-logo">
@@ -229,7 +226,7 @@ export default function App() {
           <a href="#reviews">Reviews</a>
           <a href="#pricing">Pricing</a>
           <a href="#faq">FAQ</a>
-          <button className="apply-btn" onClick={() => setPage("apply")}>
+          <button className="apply-btn pulse-btn" onClick={() => setPage("apply")}>
             Apply Now
           </button>
         </div>
@@ -248,8 +245,8 @@ export default function App() {
           Unlock the full potential of your brand with insights and powerful tools.<br />
         </p>
         <div className="hero-btn-row">
-          <button className="hero-cta" onClick={() => setPage("apply")}>
-            Apply Today
+          <button className="hero-cta pulse-btn" onClick={() => setPage("apply")}>
+            Apply Now
           </button>
           <button className="learn-more-btn" onClick={() => setPage("learn")}>
             Learn more →
@@ -260,7 +257,7 @@ export default function App() {
       {/* TRUSTED */}
       <Section wide>
         <div className="trusted-row">
-          <span>Trusted by</span>
+          <span className="trusted-title">TRUSTED BY</span>
           {trustedBrands.map(b => (
             <div className="trusted-brand" key={b.name}>
               <span>{b.name}</span>
