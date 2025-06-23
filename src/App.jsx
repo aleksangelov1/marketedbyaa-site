@@ -251,7 +251,7 @@ export default function App() {
       {/* HERO */}
       <header className="hero centered">
         <div className="logo-img big-hero-logo">
-           <img src="/logo.png" alt="Marketed by AA Logo" style={{ height: "400px" }} />
+           <img src="/logo.png" alt="Marketed by AA Logo" style={{ height: "300px" }} />
         </div>
         <h1>
           <span className="blue">Empower Your Brand</span>
@@ -283,31 +283,27 @@ export default function App() {
         </div>
       </Section>
 
-<section className="card" style={{
-  maxWidth: 440,
-  margin: "0 auto 3rem auto",
-  background: "rgba(20, 30, 42, 0.97)",
-  boxShadow: "0 8px 64px #aed6f155",
-  border: "1px solid #213c4c",
-  textAlign: "center"
-}}>
-  <div style={{ fontWeight: 700, fontSize: 18, marginBottom: 10, color: "#AED6F1" }}>
+<div className="flex flex-col items-center my-16">
+  {/* Title */}
+  <h2 className="text-2xl md:text-3xl font-bold text-[#AED6F1] mb-3 text-center">
     Generating an extra $15.5k in tracked revenue—see for yourself!
-  </div>
+  </h2>
+  {/* Image with blue glow */}
   <img
-    src="/result-proof.png"
+    src="/result-proof.png" // Make sure your file is named correctly and is in /public
     alt="Client results"
+    className="w-full max-w-2xl mx-auto mb-4"
     style={{
-      width: "100%",
-      borderRadius: "1.3em",
-      boxShadow: "0 0 14px #aed6f1bb"
+      filter: 'drop-shadow(0 0 50px #AED6F1)',
+      borderRadius: '16px'
     }}
   />
-  <div style={{ marginTop: 16, color: "#eaf6fb", fontSize: 15 }}>
-    <b>£1,918.14 spent</b> → <b>£15,505.26 in sales</b> <br />
-    <span style={{ color: "#aad" }}>7.54x avg. ROAS | 254 purchases</span>
+  {/* Caption */}
+  <div className="text-sm text-[#AED6F1] text-center font-medium">
+    £1,918.14 spent &nbsp;—&nbsp; £15,505.26 in sales <br />
+    7.54x avg. ROAS | 254 purchases
   </div>
-</section>
+</div>
 
       
       {/* ABOUT */}
