@@ -408,8 +408,9 @@ export default function App() {
           href="https://www.instagram.com/aamarketingg/"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Instagram"
         >
-          Instagram
+          <img src="/instagram.svg" alt="Instagram" className="footer-icon" />
         </a>
       </footer>
     </div>
