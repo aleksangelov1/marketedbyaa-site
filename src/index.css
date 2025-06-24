@@ -592,6 +592,8 @@ footer {
   margin: 1em 0 1.7em 0;
   text-align: left;
   color: #e3f5ff;
+  list-style: disc;
+  padding-left: 1.2em;
 }
 .learn-more-card button {
   margin-top: 1.6em;
