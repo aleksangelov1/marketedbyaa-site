@@ -403,12 +403,15 @@ export default function App() {
       </Section>
 
       <footer>
-        &copy; {new Date().getFullYear()} Marketed by AA. Website by AA. |
+        <span className="footer-text">
+          &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
+        </span>
         <a
           href="https://www.instagram.com/aamarketingg/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram"
+          className="footer-link"
         >
           <img src="/instagram.svg" alt="Instagram" className="footer-icon" />
         </a>
