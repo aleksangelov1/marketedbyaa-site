@@ -568,14 +568,13 @@ footer {
 /* Learn More */
 .learn-more-page {
   min-height: 90vh;
-  background: linear-gradient(135deg, var(--black2) 55%, #1e2b39 100%);
+  background: linear-gradient(135deg, var(--black) 55%, #1e2b39 100%);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .learn-more-card {
   background: #101624fa;
-  border: 2px solid var(--blue);
   color: var(--blue2);
   box-shadow: 0 6px 36px #AED6F140;
   border-radius: 1.2em;
