@@ -283,7 +283,17 @@ export default function App() {
         </div>
       </Section>
 
-
+{/* ————— RESULT PROOF ————— */}
+<div className="w-full flex justify-center py-8">
+  <img
+    src="/result-proof.png"
+    alt="Client results"
+    className="w-32 md:w-40 lg:w-48"
+    style={{
+      filter: 'drop-shadow(0 0 40px #AED6F1)',
+    }}
+  />
+</div>
 
       
       {/* ABOUT */}
