@@ -288,12 +288,13 @@ export default function App() {
   <img
     src="/result-proof.png"
     alt="Client results"
-    className="w-32px md:w-40 lg:w-48px"
+    className="w-16 md:w-20 lg:w-24"
     style={{
-      filter: 'drop-shadow(0 0 40px #AED6F1)',
+      filter: 'drop-shadow(0 0 30px #AED6F1)',
     }}
   />
 </div>
+
 
       
       {/* ABOUT */}
