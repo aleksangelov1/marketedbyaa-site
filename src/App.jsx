@@ -403,7 +403,14 @@ export default function App() {
       </Section>
 
       <footer>
-        &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
+        &copy; {new Date().getFullYear()} Marketed by AA. Website by AA. |
+        <a
+          href="https://www.instagram.com/aamarketingg/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Instagram
+        </a>
       </footer>
     </div>
   );
