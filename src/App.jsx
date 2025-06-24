@@ -285,7 +285,7 @@ export default function App() {
 
       {/* RESULTS PROOF */}
       <Section wide id="results-proof">
-        <h2 className="results-title">Generating an extra $15.5k in tracked revenue—see for yourself!</h2>
+        <h2 className="results-title">Generating an extra $15.5k in tracked revenue - see for yourself!</h2>
         <img src="/result-proof.png" alt="Result proof screenshot" className="result-proof-img" />
       </Section>
 

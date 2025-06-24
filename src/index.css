@@ -239,7 +239,7 @@ body {
   color: var(--blue);
   font-weight: 800;
   font-size: 1.8rem;
-  margin-bottom: 0.6em;
+  margin-bottom: 1.2em;
 }
 
 .result-proof-img {
@@ -286,6 +286,10 @@ body {
   border-radius: 1.18em;
   margin-bottom: 2vw;
   border: 1px solid #192433;
+}
+
+#why.section.dark {
+  border: none;
 }
 
 .about-list {
