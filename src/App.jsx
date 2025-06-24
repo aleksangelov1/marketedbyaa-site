@@ -283,25 +283,28 @@ export default function App() {
         </div>
       </Section>
 
-<div className="w-full flex flex-col items-center justify-center py-16">
+{/* PROOF SECTION */}
+<div className="w-full flex flex-col items-center justify-center py-12">
   {/* Title */}
   <h2
-    className="text-2xl md:text-3xl font-extrabold text-[#AED6F1] mb-8 text-center"
+    className="max-w-2xl mx-auto text-center text-3xl md:text-4xl font-extrabold text-[#AED6F1] mb-6"
     style={{ letterSpacing: '0.5px' }}
   >
     Generating an extra $15.5k in tracked revenue—see for yourself!
   </h2>
 
-  {/* Smaller image, perfectly centered */}
+  {/* Image */}
   <img
     src="/result-proof.png"
     alt="Client results"
-    className="w-24 md:w-40 rounded-lg"
+    className="w-64 md:w-80 lg:w-96 mx-auto"
     style={{
-      filter: 'drop-shadow(0 0 40px #AED6F1)',
+      filter: 'drop-shadow(0 0 60px #AED6F1)',
+      borderRadius: '0.5rem',
     }}
   />
 </div>
+
 
       
       {/* ABOUT */}
