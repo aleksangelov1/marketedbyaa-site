@@ -235,6 +235,21 @@ body {
   opacity: 0.90;
 }
 
+.results-title {
+  color: var(--blue);
+  font-weight: 800;
+  font-size: 1.8rem;
+  margin-bottom: 1.2em;
+}
+
+.result-proof-img {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 0.7em;
+  box-shadow: 0 4px 32px #AED6F140;
+  filter: drop-shadow(0 0 36px var(--blue));
+}
+
 .section {
   padding: 5vw 6vw 5vw 6vw;
   background: transparent;
@@ -271,6 +286,10 @@ body {
   border-radius: 1.18em;
   margin-bottom: 2vw;
   border: 1px solid #192433;
+}
+
+#why.section.dark {
+  border: none;
 }
 
 .about-list {
@@ -402,6 +421,23 @@ footer {
   font-size: 1rem;
   background: var(--dark);
   margin-top: 3vw;
+}
+.social-link {
+  display: inline-block;
+  margin-bottom: 0.8em;
+}
+.social-icon {
+  width: 32px;
+  height: 32px;
+  fill: var(--blue);
+  filter: drop-shadow(0 0 8px var(--blue));
+  transition: transform 0.2s;
+}
+.social-link:hover .social-icon {
+  transform: scale(1.1);
+}
+.footer-copy {
+  margin-top: 0.2em;
 }
 
 /* Apply Page / Form */
@@ -553,14 +589,13 @@ footer {
 /* Learn More */
 .learn-more-page {
   min-height: 90vh;
-  background: linear-gradient(135deg, var(--black2) 55%, #1e2b39 100%);
+  background: linear-gradient(135deg, var(--black) 55%, #1e2b39 100%);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .learn-more-card {
   background: #101624fa;
-  border: 2px solid var(--blue);
   color: var(--blue2);
   box-shadow: 0 6px 36px #AED6F140;
   border-radius: 1.2em;
@@ -578,6 +613,8 @@ footer {
   margin: 1em 0 1.7em 0;
   text-align: left;
   color: #e3f5ff;
+  list-style: disc;
+  padding-left: 1.2em;
 }
 .learn-more-card button {
   margin-top: 1.6em;

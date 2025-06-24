@@ -283,8 +283,12 @@ export default function App() {
         </div>
       </Section>
 
+      {/* RESULTS PROOF */}
+      <Section wide id="results-proof">
+        <h2 className="results-title">Generating an extra $15.5k in tracked revenue - see for yourself!</h2>
+        <img src="/result-proof.png" alt="Result proof screenshot" className="result-proof-img" />
+      </Section>
 
-      
       {/* ABOUT */}
       <Section id="about" title="About Us" wide>
         <p>
@@ -403,7 +407,17 @@ export default function App() {
       </Section>
 
       <footer>
-        &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
+        <a
+          href="https://instagram.com/marketedbyaa"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-link"
+        >
+          <img src="/instagram.svg" alt="Instagram" className="social-icon" />
+        </a>
+        <div className="footer-copy">
+          &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
+        </div>
       </footer>
     </div>
   );
