@@ -283,7 +283,7 @@ export default function App() {
         </div>
       </Section>
 
-<div className="flex flex-col items-center justify-center py-16">
+<div className="w-full flex flex-col items-center justify-center py-16">
   {/* Title */}
   <h2
     className="text-2xl md:text-3xl font-extrabold text-[#AED6F1] mb-8 text-center"
@@ -292,11 +292,11 @@ export default function App() {
     Generating an extra $15.5k in tracked revenue—see for yourself!
   </h2>
 
-  {/* Image with glow */}
+  {/* Smaller image, perfectly centered */}
   <img
     src="/result-proof.png"
     alt="Client results"
-    className="w-40 md:w-60 rounded-lg"
+    className="w-24 md:w-40 rounded-lg"
     style={{
       filter: 'drop-shadow(0 0 40px #AED6F1)',
     }}
