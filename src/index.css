@@ -396,12 +396,19 @@ body {
 }
 
 footer {
-  text-align: center;
-  padding: 2em 0 1.2em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 1.5em 1.2em 1.5em;
   color: #aed6f1c9;
   font-size: 1rem;
   background: var(--dark);
   margin-top: 3vw;
+}
+footer .insta-link svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--blue);
 }
 
 /* Apply Page / Form */
