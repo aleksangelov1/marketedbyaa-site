@@ -403,7 +403,19 @@ export default function App() {
       </Section>
 
       <footer>
-        &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
+        <span className="footer-text">
+          &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
+        </span>
+        <a
+          href="https://www.instagram.com/aamarketingg/"
+          className="insta-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5Zm4.25 3A5.75 5.75 0 1 1 6.25 12.25 5.76 5.76 0 0 1 12 6.5Zm0 1.5a4.25 4.25 0 1 0 4.25 4.25A4.25 4.25 0 0 0 12 8Zm5.38-.88a1 1 0 1 1-1 1 1 1 0 0 1 1-1Z" />
+          </svg>
+        </a>
       </footer>
     </div>
   );
