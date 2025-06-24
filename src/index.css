@@ -422,6 +422,23 @@ footer {
   background: var(--dark);
   margin-top: 3vw;
 }
+.social-link {
+  display: inline-block;
+  margin-bottom: 0.8em;
+}
+.social-icon {
+  width: 32px;
+  height: 32px;
+  fill: var(--blue);
+  filter: drop-shadow(0 0 8px var(--blue));
+  transition: transform 0.2s;
+}
+.social-link:hover .social-icon {
+  transform: scale(1.1);
+}
+.footer-copy {
+  margin-top: 0.2em;
+}
 
 /* Apply Page / Form */
 .apply-form-outer {

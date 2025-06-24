@@ -407,7 +407,17 @@ export default function App() {
       </Section>
 
       <footer>
-        &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
+        <a
+          href="https://instagram.com/marketedbyaa"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="social-link"
+        >
+          <img src="/instagram.svg" alt="Instagram" className="social-icon" />
+        </a>
+        <div className="footer-copy">
+          &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
+        </div>
       </footer>
     </div>
   );
