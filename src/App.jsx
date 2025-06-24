@@ -283,27 +283,26 @@ export default function App() {
         </div>
       </Section>
 
-{/* PROOF SECTION */}
-<div className="flex flex-col items-center justify-center py-12">
-  {/* Title */}
-  <h2
-    className="max-w-lg text-center text-3xl font-extrabold text-[#AED6F1] mb-6"
-    style={{ letterSpacing: '0.5px' }}
-  >
-    Generating an extra $15.5k in tracked revenue—see for yourself!
-  </h2>
-
-  {/* Image */}
-  <img
-    src="/result-proof.png"
-    alt="Client results"
-    className="w-40 md:w-56 lg:w-64"
-    style={{
-      filter: 'drop-shadow(0 0 50px #AED6F1)',
-      borderRadius: '0.5rem',
-    }}
-  />
+<div className="flex flex-col items-center justify-center min-h-[60vh] w-full">
+  <div className="flex justify-center w-full">
+    <h2 className="text-xl md:text-2xl font-extrabold text-[#AED6F1] mb-4 text-center" style={{ letterSpacing: '0.5px' }}>
+      Generating an extra $15.5k in tracked revenue—see for yourself!
+    </h2>
+  </div>
+  <div className="relative flex justify-center items-center mb-3 w-full">
+    <img
+      src="/result-proof.png"
+      alt="Client results"
+      className="w-[180px] md:w-[220px] rounded-lg"
+      style={{
+        filter: 'drop-shadow(0 0 32px #AED6F1)',
+        display: 'block',
+        background: 'transparent',
+      }}
+    />
+  </div>
 </div>
+
 
       
       {/* ABOUT */}
