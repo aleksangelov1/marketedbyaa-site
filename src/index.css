@@ -396,12 +396,19 @@ body {
 }
 
 footer {
-  text-align: center;
-  padding: 2em 0 1.2em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em;
   color: #aed6f1c9;
   font-size: 1rem;
   background: var(--dark);
   margin-top: 3vw;
+}
+
+footer .footer-icon {
+  width: 1.3em;
+  height: 1.3em;
 }
 
 /* Apply Page / Form */
