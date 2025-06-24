@@ -288,7 +288,7 @@ export default function App() {
   <img
     src="/result-proof.png"
     alt="Client results"
-    className="w-32 md:w-40 lg:w-48"
+    className="w-32px md:w-40 lg:w-48px"
     style={{
       filter: 'drop-shadow(0 0 40px #AED6F1)',
     }}
