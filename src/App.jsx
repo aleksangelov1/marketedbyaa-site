@@ -283,7 +283,18 @@ export default function App() {
         </div>
       </Section>
 
-
+      {/* PROOF SECTION */}
+      <div className="proof-section">
+        <h2 className="proof-title">
+          Generating an extra $15.5k in tracked revenue—see for yourself!
+        </h2>
+        <div className="proof-img-wrapper">
+          <img src="/result-proof.png" alt="Client results" className="proof-img" />
+        </div>
+        <div className="proof-caption">
+          £1,918.14 spent — £15,505.26 in sales • 7.54x avg. ROAS • 254 purchases
+        </div>
+      </div>
       
       {/* ABOUT */}
       <Section id="about" title="About Us" wide>
@@ -403,7 +414,16 @@ export default function App() {
       </Section>
 
       <footer>
-        &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
+        <div className="insta-footer">
+          <span role="img" aria-label="Home">🏠</span>
+          <span role="img" aria-label="Search">🔍</span>
+          <span role="img" aria-label="Add" className="add">➕</span>
+          <span role="img" aria-label="Likes">❤️</span>
+          <span role="img" aria-label="Profile">👤</span>
+        </div>
+        <div>
+          &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
+        </div>
       </footer>
     </div>
   );
