@@ -396,25 +396,24 @@ body {
 }
 
 footer {
-  text-align: center;
-  padding: 2em 0 1.2em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em 2em;
   color: #aed6f1c9;
   font-size: 1rem;
   background: var(--dark);
   margin-top: 3vw;
 }
 
-/* Instagram-style footer icons */
-.insta-footer {
-  display: flex;
-  justify-content: space-around;
-  max-width: 400px;
-  margin: 0 auto 1em auto;
-  font-size: 1.4rem;
-  color: var(--blue2);
+.footer-text {
+  color: #aed6f1c9;
 }
-.insta-footer .add {
-  font-size: 1.6rem;
+
+.footer-instagram svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--blue);
 }
 
 /* Proof section */
@@ -429,15 +428,10 @@ footer {
   margin-bottom: 1rem;
 }
 .proof-img {
-  width: 180px;
+  width: 300px;
   max-width: 90%;
   border-radius: 0.5em;
   filter: drop-shadow(0 0 32px #AED6F1);
-}
-.proof-caption {
-  color: var(--blue);
-  font-weight: 600;
-  margin-top: 0.6rem;
 }
 
 /* Apply Page / Form */

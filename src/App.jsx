@@ -289,10 +289,11 @@ export default function App() {
           Generating an extra $15.5k in tracked revenue—see for yourself!
         </h2>
         <div className="proof-img-wrapper">
-          <img src="/result-proof.png" alt="Client results" className="proof-img" />
-        </div>
-        <div className="proof-caption">
-          £1,918.14 spent — £15,505.26 in sales • 7.54x avg. ROAS • 254 purchases
+          <img
+            src="/result-proof.png"
+            alt="Client results"
+            className="proof-img"
+          />
         </div>
       </div>
       
@@ -413,17 +414,21 @@ export default function App() {
         </details>
       </Section>
 
-      <footer>
-        <div className="insta-footer">
-          <span role="img" aria-label="Home">🏠</span>
-          <span role="img" aria-label="Search">🔍</span>
-          <span role="img" aria-label="Add" className="add">➕</span>
-          <span role="img" aria-label="Likes">❤️</span>
-          <span role="img" aria-label="Profile">👤</span>
-        </div>
-        <div>
+      <footer className="site-footer">
+        <div className="footer-text">
           &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
         </div>
+        <a
+          href="https://www.instagram.com/aamarketingg/"
+          className="footer-instagram"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+            <path d="M349.33 69.33H162.67A88 88 0 0 0 74.67 157.33V354.7a88 88 0 0 0 88 88h186.66a88 88 0 0 0 88-88V157.33a88 88 0 0 0-88-88Zm-93.33 96A88 88 0 1 1 168 256a88 88 0 0 1 88-88Zm106.67-48a20 20 0 1 1-20 20 20 20 0 0 1 20-20Z" />
+          </svg>
+        </a>
       </footer>
     </div>
   );
