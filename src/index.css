@@ -428,8 +428,8 @@ footer {
   margin-bottom: 1rem;
 }
 .proof-img {
-  width: 300px;
-  max-width: 90%;
+  width: 600px;
+  max-width: 95%;
   border-radius: 0.5em;
   filter: drop-shadow(0 0 32px #AED6F1);
 }
