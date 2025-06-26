@@ -582,18 +582,20 @@ footer {
 
 /* Learn More */
 .learn-more-page {
-  min-height: 90vh;
-  background: linear-gradient(135deg, var(--black2) 55%, #212f43 100%);
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--black) 55%, #1e2b39 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 .learn-more-card {
-  background: #101624fa;
-  border: 2px solid #38bdf8cc;
+  background: transparent;
+  border: none;
   color: var(--blue2);
-  box-shadow: 0 6px 36px #38bdf840;
-  border-radius: 1.2em;
+  box-shadow: none;
+  border-radius: 0;
   padding: 2.2em 2.5em;
   max-width: 520px;
   text-align: center;

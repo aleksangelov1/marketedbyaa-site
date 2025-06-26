@@ -1,6 +1,11 @@
 export default function LearnMore({ onBackHome }) {
   return (
     <div className="learn-more-page">
+      <div className="hero-blobs">
+        <div className="blob blob1"></div>
+        <div className="blob blob2"></div>
+        <div className="blob blob3"></div>
+      </div>
       <div className="learn-more-card">
         <h1>Learn More About Marketed by AA</h1>
         <p>
