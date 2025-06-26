@@ -396,12 +396,42 @@ body {
 }
 
 footer {
-  text-align: center;
-  padding: 2em 0 1.2em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5em 2em;
   color: #aed6f1c9;
   font-size: 1rem;
   background: var(--dark);
   margin-top: 3vw;
+}
+
+.footer-text {
+  color: #aed6f1c9;
+}
+
+.footer-instagram svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--blue);
+}
+
+/* Proof section */
+.proof-section {
+  text-align: center;
+  padding: 4vw 0;
+}
+.proof-title {
+  color: var(--blue);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+.proof-img {
+  width: 600px;
+  max-width: 95%;
+  border-radius: 0.5em;
+  filter: drop-shadow(0 0 32px #AED6F1);
 }
 
 /* Apply Page / Form */
@@ -552,18 +582,20 @@ footer {
 
 /* Learn More */
 .learn-more-page {
-  min-height: 90vh;
-  background: linear-gradient(135deg, var(--black2) 55%, #1e2b39 100%);
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--black) 55%, #1e2b39 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow: hidden;
 }
 .learn-more-card {
-  background: #101624fa;
-  border: 2px solid var(--blue);
+  background: transparent;
+  border: none;
   color: var(--blue2);
-  box-shadow: 0 6px 36px #AED6F140;
-  border-radius: 1.2em;
+  box-shadow: none;
+  border-radius: 0;
   padding: 2.2em 2.5em;
   max-width: 520px;
   text-align: center;
@@ -577,7 +609,7 @@ footer {
 .learn-more-card ul {
   margin: 1em 0 1.7em 0;
   text-align: left;
-  color: #e3f5ff;
+  color: #b1edff;
 }
 .learn-more-card button {
   margin-top: 1.6em;
