@@ -216,6 +216,7 @@ function Section({ id, title, children, dark, wide }) {
 
 export default function App() {
   const [page, setPage] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   if (page === "learn") return <LearnMore onBackHome={() => setPage("")} />;
   if (page === "apply") return <ApplyNowForm onBackHome={() => setPage("")} />;
@@ -234,15 +235,28 @@ export default function App() {
         <div className="logo-img big-logo">
           <img src="/logo.png" alt="Marketed by AA Logo" />
         </div>
-        <div className="nav-links">
-          <a href="#about">About</a>
-          <a href="#why">Why Us</a>
-          <a href="#services">Services</a>
-          <a href="#how">How It Works</a>
-          <a href="#reviews">Reviews</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#faq">FAQ</a>
-          <button className="apply-btn pulse-btn" onClick={() => setPage("apply")}>
+        <button
+          className="menu-toggle"
+          aria-label="Toggle navigation"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          ☰
+        </button>
+        <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+          <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+          <a href="#why" onClick={() => setMenuOpen(false)}>Why Us</a>
+          <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+          <a href="#how" onClick={() => setMenuOpen(false)}>How It Works</a>
+          <a href="#reviews" onClick={() => setMenuOpen(false)}>Reviews</a>
+          <a href="#pricing" onClick={() => setMenuOpen(false)}>Pricing</a>
+          <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <button
+            className="apply-btn pulse-btn"
+            onClick={() => {
+              setPage("apply");
+              setMenuOpen(false);
+            }}
+          >
             Apply Now
           </button>
         </div>
@@ -251,7 +265,7 @@ export default function App() {
       {/* HERO */}
       <header className="hero centered">
         <div className="logo-img big-hero-logo">
-           <img src="/logo.png" alt="Marketed by AA Logo" style={{ height: "300px" }} />
+          <img src="/logo.png" alt="Marketed by AA Logo" />
         </div>
         <h1>
           <span className="blue">Empower Your Brand</span>
