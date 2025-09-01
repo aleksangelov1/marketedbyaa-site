@@ -397,15 +397,64 @@ export default function App() {
       </Section>
 
       {/* PRICING */}
-      <Section id="pricing" title="Pricing" dark>
-        <ul className="pricing-list">
-          <li> Essentials: from <span className="blue">£500/mo</span></li>
-          <li> Full Service Growth: from <span className="blue">£1,000/mo</span> + % of ad spend</li>
-          <li> Creative Packs: from <span className="blue">£250/mo</span></li>
-          <li>
-            Need something bespoke? <span className="blue">Get in touch.</span>
-          </li>
-        </ul>
+      <Section id="pricing" title="Our Pricing Approach" dark>
+        <div className="pricing-list">
+          <p>Every business is unique — so our pricing is built around you.</p>
+          <p>
+            At Marketed by AA, we believe in flexibility. Instead of locking you
+            into a one-size-fits-all package, we offer tailored models that
+            adapt to your goals, budget, and growth stage.
+          </p>
+
+          <p>⸻</p>
+
+          <h3>💼 Retainer Based (Flat Monthly Fee)</h3>
+          <ul>
+            <li>Fixed monthly cost for peace of mind.</li>
+            <li>You’ll always know exactly what you’re billed.</li>
+            <li>
+              Even if results scale massively, you only pay the agreed amount.
+            </li>
+          </ul>
+          <p>👉 Perfect if you want predictable, stable growth.</p>
+
+          <p>⸻</p>
+
+          <h3>📈 Results Based (Pay for Performance)</h3>
+          <ul>
+            <li>You only pay based on the results we deliver.</li>
+            <li>Minimal risk on your end — we carry the responsibility.</li>
+            <li>Easier to say “yes” since ROI is clear from day one.</li>
+          </ul>
+          <p>👉 Perfect if you want risk-free scaling.</p>
+
+          <p>⸻</p>
+
+          <h3>🎯 Free Trial Periods (Case-by-Case)</h3>
+          <ul>
+            <li>In some cases, we offer trial periods or discounted first months.</li>
+            <li>Gives you the chance to see how we work before fully committing.</li>
+          </ul>
+          <p>👉 Perfect if you want to test drive our system before scaling up.</p>
+
+          <p>⸻</p>
+
+          <h3>Our Promise</h3>
+          <p>
+            Whether you prefer stability, flexibility, or a trial to start,
+            we’ll structure pricing around what makes you comfortable.
+          </p>
+
+          <p>⸻</p>
+
+          <button
+            className="hero-cta"
+            onClick={() => setPage("apply")}
+            style={{ marginTop: "1em" }}
+          >
+            Book Your Free Strategy Call →
+          </button>
+        </div>
       </Section>
 
       {/* FAQ */}
