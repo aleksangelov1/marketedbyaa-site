@@ -254,7 +254,7 @@ body {
 }
 
 .result-proof img {
-  max-width: 400px;
+  max-width: 1000px;
   width: 100%;
   height: auto;
   filter: drop-shadow(0 0 24px var(--blue));
@@ -264,6 +264,7 @@ body {
   max-width: 600px;
   margin: 0 auto 1rem;
   font-size: 0.97em;
+  font-weight: 700;
   opacity: 0.9;
 }
 
