@@ -705,4 +705,24 @@ footer .instagram-link svg {
   .form-card, .learn-more-card {
     max-width: 97vw;
   }
+  .about-list,
+  .services-list,
+  .pricing-list,
+  .section details {
+    text-align: center;
+  }
+  .about-list,
+  .services-list,
+  .pricing-list,
+  .pricing-list ul {
+    padding-left: 0;
+  }
+  .about-list li,
+  .services-list li,
+  .pricing-list li {
+    list-style-position: inside;
+  }
+  .section summary {
+    text-align: center;
+  }
 }
