@@ -421,7 +421,7 @@ export default function App() {
           &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
         </span>
         <a
-          href="https://www.instagram.com/marketedbyaa/"
+          href="https://www.instagram.com/aamarketingg/"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Instagram"
