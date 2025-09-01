@@ -109,10 +109,24 @@ function ApplyNowForm({ onBackHome }) {
     setForm({ ...form, [steps[step].name]: value });
   };
 
-  const handleNext = (e) => {
+  const handleNext = async (e) => {
     e.preventDefault();
-    if (step < steps.length - 1) setStep(step + 1);
-    else setSubmitted(true);
+    if (step < steps.length - 1) {
+      setStep(step + 1);
+    } else {
+      try {
+        await fetch("/api/applications", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        });
+      } catch (err) {
+        console.error("Failed to submit application", err);
+      }
+      setSubmitted(true);
+    }
   };
   const handlePrev = () => (step > 0 ? setStep(step - 1) : onBackHome());
 
