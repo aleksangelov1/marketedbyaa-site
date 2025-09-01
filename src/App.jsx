@@ -101,6 +101,7 @@ function ApplyNowForm({ onBackHome }) {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  const scriptURL = "https://script.google.com/macros/s/YOUR_SCRIPT_URL/exec"; // replace with your Apps Script URL
 
   const handleChange = (e) => {
     setForm({ ...form, [steps[step].name]: e.target.value });
@@ -111,8 +112,16 @@ function ApplyNowForm({ onBackHome }) {
 
   const handleNext = (e) => {
     e.preventDefault();
-    if (step < steps.length - 1) setStep(step + 1);
-    else setSubmitted(true);
+    if (step < steps.length - 1) {
+      setStep(step + 1);
+    } else {
+      const data = new FormData();
+      Object.entries(form).forEach(([key, value]) => data.append(key, value));
+      fetch(scriptURL, { method: "POST", body: data, mode: "no-cors" }).catch(
+        console.error
+      );
+      setSubmitted(true);
+    }
   };
   const handlePrev = () => (step > 0 ? setStep(step - 1) : onBackHome());
 
