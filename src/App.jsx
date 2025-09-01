@@ -101,6 +101,8 @@ function ApplyNowForm({ onBackHome }) {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  // Replace with your deployed Google Apps Script URL
+  const sheetUrl = import.meta.env.VITE_GOOGLE_SHEET_URL;
 
   const handleChange = (e) => {
     setForm({ ...form, [steps[step].name]: e.target.value });
@@ -109,10 +111,23 @@ function ApplyNowForm({ onBackHome }) {
     setForm({ ...form, [steps[step].name]: value });
   };
 
-  const handleNext = (e) => {
+  const handleNext = async (e) => {
     e.preventDefault();
-    if (step < steps.length - 1) setStep(step + 1);
-    else setSubmitted(true);
+    if (step < steps.length - 1) {
+      setStep(step + 1);
+    } else {
+      try {
+        await fetch(sheetUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+      } catch (err) {
+        console.error("Failed to submit form", err);
+      }
+      setSubmitted(true);
+    }
   };
   const handlePrev = () => (step > 0 ? setStep(step - 1) : onBackHome());
 
