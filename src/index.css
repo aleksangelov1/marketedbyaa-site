@@ -272,11 +272,11 @@ body {
   padding: 5vw 6vw 5vw 6vw;
   background: transparent;
   margin: 0 auto;
-  max-width: 980px;
+  max-width: 1100px;
   text-align: center;
 }
 .section.wide {
-  max-width: 1200px;
+  max-width: 1300px;
 }
 .section-heading {
   display: flex;
@@ -403,10 +403,18 @@ body {
 
 .pricing-list {
   text-align: left;
-  max-width: 430px;
+  max-width: 700px;
   margin: 0 auto;
   font-size: 1.17rem;
-  line-height: 1.7;
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+}
+
+.pricing-list ul {
+  margin: 0;
+  padding-left: 1.2em;
 }
 
 .section details {
