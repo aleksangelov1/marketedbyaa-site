@@ -254,10 +254,17 @@ body {
 }
 
 .result-proof img {
-  max-width: 200px;
+  max-width: 280px;
   width: 100%;
   height: auto;
   filter: drop-shadow(0 0 24px var(--blue));
+}
+
+.result-desc {
+  max-width: 600px;
+  margin: 0 auto 1rem;
+  font-size: 0.97em;
+  opacity: 0.9;
 }
 
 .section {
