@@ -246,6 +246,20 @@ body {
   opacity: 0.90;
 }
 
+/* Result proof image */
+.result-proof {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.result-proof img {
+  max-width: 200px;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 24px var(--blue));
+}
+
 .section {
   padding: 5vw 6vw 5vw 6vw;
   background: transparent;
