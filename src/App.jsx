@@ -450,7 +450,7 @@ export default function App() {
           <button
             className="hero-cta"
             onClick={() => setPage("apply")}
-            style={{ marginTop: "1em" }}
+            style={{ marginTop: "1em", alignSelf: "center" }}
           >
             Book Your Free Strategy Call →
           </button>
