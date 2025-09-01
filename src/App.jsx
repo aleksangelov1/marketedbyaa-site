@@ -300,7 +300,7 @@ export default function App() {
       {/* ————— RESULT PROOF ————— */}
       <Section title="Client Results">
         <p className="result-desc">
-          Real ad account evidence from a recent client campaign.
+          Generating an extra $15.5k in tracked revenue - see for yourself!
         </p>
         <div className="result-proof">
           <img src="/result-proof.png" alt="Client results" />
