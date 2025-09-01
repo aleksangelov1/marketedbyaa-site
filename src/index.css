@@ -90,8 +90,11 @@ body {
 .logo-img img:hover {
   filter: drop-shadow(0 0 36px var(--blue));
 }
-.big-logo img, .big-hero-logo img {
+.big-logo img {
   height: 78px;
+}
+.big-hero-logo img {
+  height: 300px;
 }
 .big-hero-logo {
   margin-bottom: 14px;
@@ -112,6 +115,14 @@ body {
 }
 .nav-links a:hover {
   color: var(--blue);
+}
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 2rem;
+  cursor: pointer;
 }
 .apply-btn {
   background: var(--blue);
@@ -235,15 +246,37 @@ body {
   opacity: 0.90;
 }
 
+/* Result proof image */
+.result-proof {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.result-proof img {
+  max-width: 1000px;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 24px var(--blue));
+}
+
+.result-desc {
+  max-width: 600px;
+  margin: 0 auto 1rem;
+  font-size: 0.97em;
+  font-weight: 700;
+  opacity: 0.9;
+}
+
 .section {
   padding: 5vw 6vw 5vw 6vw;
   background: transparent;
   margin: 0 auto;
-  max-width: 980px;
+  max-width: 1100px;
   text-align: center;
 }
 .section.wide {
-  max-width: 1200px;
+  max-width: 1300px;
 }
 .section-heading {
   display: flex;
@@ -370,10 +403,18 @@ body {
 
 .pricing-list {
   text-align: left;
-  max-width: 430px;
+  max-width: 700px;
   margin: 0 auto;
   font-size: 1.17rem;
-  line-height: 1.7;
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+}
+
+.pricing-list ul {
+  margin: 0;
+  padding-left: 1.2em;
 }
 
 .section details {
@@ -396,12 +437,24 @@ body {
 }
 
 footer {
-  text-align: center;
-  padding: 2em 0 1.2em 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2em 1.5em 1.2em 1.5em;
   color: #aed6f1c9;
   font-size: 1rem;
   background: var(--dark);
   margin-top: 3vw;
+}
+
+footer .instagram-link {
+  color: #aed6f1c9;
+  text-decoration: none;
+}
+
+footer .instagram-link svg {
+  width: 24px;
+  height: 24px;
 }
 
 /* Apply Page / Form */
@@ -588,9 +641,88 @@ footer {
   .section, .section.dark, .section.wide { padding: 4vw 1.2vw; max-width: 99vw;}
 }
 @media (max-width: 600px) {
-  .navbar { flex-direction: column; gap: 1em; padding: 1em 1vw; }
-  .nav-links { gap: 0.8em; flex-wrap: wrap;}
-  .hero h1 { font-size: 2.2rem;}
-  .section, .section.dark, .section.wide { padding: 2vw 0.3vw;}
-  .form-card, .learn-more-card { max-width: 97vw;}
+  .navbar {
+    padding: 0.6rem 1rem;
+  }
+  .navbar .logo-img {
+    height: 48px;
+  }
+  .navbar .logo-img img {
+    height: 44px;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--black);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #192433;
+  }
+  .nav-links.open {
+    display: flex;
+  }
+  .nav-links a,
+  .nav-links button {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    margin-left: 0;
+    text-align: left;
+    font-size: 1rem;
+  }
+  .apply-btn {
+    margin-left: 0;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero p {
+    font-size: 1.1rem;
+  }
+  .hero-btn-row {
+    flex-direction: column;
+    gap: 0.8em;
+  }
+  .hero-cta,
+  .learn-more-btn {
+    width: 100%;
+    max-width: 260px;
+    font-size: 1rem;
+    padding: 0.8em 1.6em;
+    margin-right: 0;
+  }
+  .big-hero-logo img {
+    height: 160px;
+  }
+  .section, .section.dark, .section.wide {
+    padding: 2vw 0.3vw;
+  }
+  .form-card, .learn-more-card {
+    max-width: 97vw;
+  }
+  .about-list,
+  .services-list,
+  .pricing-list,
+  .section details {
+    text-align: center;
+  }
+  .about-list,
+  .services-list,
+  .pricing-list,
+  .pricing-list ul {
+    padding-left: 0;
+  }
+  .about-list li,
+  .services-list li,
+  .pricing-list li {
+    list-style-position: inside;
+  }
+  .section summary {
+    text-align: center;
+  }
 }

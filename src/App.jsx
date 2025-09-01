@@ -101,6 +101,8 @@ function ApplyNowForm({ onBackHome }) {
   const [step, setStep] = useState(0);
   const [form, setForm] = useState({});
   const [submitted, setSubmitted] = useState(false);
+  // Replace with your deployed Google Apps Script URL
+  const sheetUrl = import.meta.env.VITE_GOOGLE_SHEET_URL;
 
   const handleChange = (e) => {
     setForm({ ...form, [steps[step].name]: e.target.value });
@@ -109,10 +111,23 @@ function ApplyNowForm({ onBackHome }) {
     setForm({ ...form, [steps[step].name]: value });
   };
 
-  const handleNext = (e) => {
+  const handleNext = async (e) => {
     e.preventDefault();
-    if (step < steps.length - 1) setStep(step + 1);
-    else setSubmitted(true);
+    if (step < steps.length - 1) {
+      setStep(step + 1);
+    } else {
+      try {
+        await fetch(sheetUrl, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(form),
+        });
+      } catch (err) {
+        console.error("Failed to submit form", err);
+      }
+      setSubmitted(true);
+    }
   };
   const handlePrev = () => (step > 0 ? setStep(step - 1) : onBackHome());
 
@@ -216,6 +231,7 @@ function Section({ id, title, children, dark, wide }) {
 
 export default function App() {
   const [page, setPage] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
 
   if (page === "learn") return <LearnMore onBackHome={() => setPage("")} />;
   if (page === "apply") return <ApplyNowForm onBackHome={() => setPage("")} />;
@@ -234,15 +250,28 @@ export default function App() {
         <div className="logo-img big-logo">
           <img src="/logo.png" alt="Marketed by AA Logo" />
         </div>
-        <div className="nav-links">
-          <a href="#about">About</a>
-          <a href="#why">Why Us</a>
-          <a href="#services">Services</a>
-          <a href="#how">How It Works</a>
-          <a href="#reviews">Reviews</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#faq">FAQ</a>
-          <button className="apply-btn pulse-btn" onClick={() => setPage("apply")}>
+        <button
+          className="menu-toggle"
+          aria-label="Toggle navigation"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          ☰
+        </button>
+        <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+          <a href="#about" onClick={() => setMenuOpen(false)}>About</a>
+          <a href="#why" onClick={() => setMenuOpen(false)}>Why Us</a>
+          <a href="#services" onClick={() => setMenuOpen(false)}>Services</a>
+          <a href="#how" onClick={() => setMenuOpen(false)}>How It Works</a>
+          <a href="#reviews" onClick={() => setMenuOpen(false)}>Reviews</a>
+          <a href="#pricing" onClick={() => setMenuOpen(false)}>Pricing</a>
+          <a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a>
+          <button
+            className="apply-btn pulse-btn"
+            onClick={() => {
+              setPage("apply");
+              setMenuOpen(false);
+            }}
+          >
             Apply Now
           </button>
         </div>
@@ -251,7 +280,7 @@ export default function App() {
       {/* HERO */}
       <header className="hero centered">
         <div className="logo-img big-hero-logo">
-           <img src="/logo.png" alt="Marketed by AA Logo" style={{ height: "300px" }} />
+          <img src="/logo.png" alt="Marketed by AA Logo" />
         </div>
         <h1>
           <span className="blue">Empower Your Brand</span>
@@ -283,8 +312,16 @@ export default function App() {
         </div>
       </Section>
 
+      {/* ————— RESULT PROOF ————— */}
+      <Section title="Client Results">
+        <p className="result-desc">
+          Generating an extra $15.5k in tracked revenue - see for yourself!
+        </p>
+        <div className="result-proof">
+          <img src="/result-proof.png" alt="Client results" />
+        </div>
+      </Section>
 
-      
       {/* ABOUT */}
       <Section id="about" title="About Us" wide>
         <p>
@@ -375,15 +412,64 @@ export default function App() {
       </Section>
 
       {/* PRICING */}
-      <Section id="pricing" title="Pricing" dark>
-        <ul className="pricing-list">
-          <li> Essentials: from <span className="blue">£500/mo</span></li>
-          <li> Full Service Growth: from <span className="blue">£1,000/mo</span> + % of ad spend</li>
-          <li> Creative Packs: from <span className="blue">£250/mo</span></li>
-          <li>
-            Need something bespoke? <span className="blue">Get in touch.</span>
-          </li>
-        </ul>
+      <Section id="pricing" title="Our Pricing Approach" dark>
+        <div className="pricing-list">
+          <p>Every business is unique — so our pricing is built around you.</p>
+          <p>
+            At Marketed by AA, we believe in flexibility. Instead of locking you
+            into a one-size-fits-all package, we offer tailored models that
+            adapt to your goals, budget, and growth stage.
+          </p>
+
+          <p>⸻</p>
+
+          <h3>💼 Retainer Based (Flat Monthly Fee)</h3>
+          <ul>
+            <li>Fixed monthly cost for peace of mind.</li>
+            <li>You’ll always know exactly what you’re billed.</li>
+            <li>
+              Even if results scale massively, you only pay the agreed amount.
+            </li>
+          </ul>
+          <p>👉 Perfect if you want predictable, stable growth.</p>
+
+          <p>⸻</p>
+
+          <h3>📈 Results Based (Pay for Performance)</h3>
+          <ul>
+            <li>You only pay based on the results we deliver.</li>
+            <li>Minimal risk on your end — we carry the responsibility.</li>
+            <li>Easier to say “yes” since ROI is clear from day one.</li>
+          </ul>
+          <p>👉 Perfect if you want risk-free scaling.</p>
+
+          <p>⸻</p>
+
+          <h3>🎯 Free Trial Periods (Case-by-Case)</h3>
+          <ul>
+            <li>In some cases, we offer trial periods or discounted first months.</li>
+            <li>Gives you the chance to see how we work before fully committing.</li>
+          </ul>
+          <p>👉 Perfect if you want to test drive our system before scaling up.</p>
+
+          <p>⸻</p>
+
+          <h3>Our Promise</h3>
+          <p>
+            Whether you prefer stability, flexibility, or a trial to start,
+            we’ll structure pricing around what makes you comfortable.
+          </p>
+
+          <p>⸻</p>
+
+          <button
+            className="hero-cta"
+            onClick={() => setPage("apply")}
+            style={{ marginTop: "1em", alignSelf: "center" }}
+          >
+            Book Your Free Strategy Call →
+          </button>
+        </div>
       </Section>
 
       {/* FAQ */}
@@ -403,7 +489,26 @@ export default function App() {
       </Section>
 
       <footer>
-        &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
+        <span>
+          &copy; {new Date().getFullYear()} Marketed by AA. Website by AA.
+        </span>
+        <a
+          href="https://www.instagram.com/aamarketingg/"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+          className="instagram-link"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            width="24"
+            height="24"
+            fill="currentColor"
+          >
+            <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm5-2.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" />
+          </svg>
+        </a>
       </footer>
     </div>
   );
